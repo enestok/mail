@@ -23,14 +23,14 @@ namespace mailGonder
         {
             MailMessage ePosta = new MailMessage();
 
-            var splitMails = txtAliciMail.Text.Split(';').ToList();
-          
+            ePosta.From = new MailAddress("" + txtGonderenMail.Text + "");
 
-            ePosta.From = new MailAddress(""+ txtGonderenMail.Text +"");
+            var splitMails = txtAliciMail.Text.Split(';').ToList();
             foreach (string hasSplitted in splitMails)
             {
                 ePosta.To.Add(hasSplitted.ToString());
             }
+
             ePosta.Subject = txtKonu.Text;
             ePosta.Body = txtRichMesaj.Text;
             //ePosta.Attachments.Add(new Attachment(@"D:\dosya1.txt"));
@@ -66,7 +66,7 @@ namespace mailGonder
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            btnGonder.Image = Properties.Resources.sendOff;
+           // btnGonder.Image = Properties.Resources.sendOff;
         }
 
         private void btnGonder_MouseLeave(object sender, EventArgs e)
@@ -76,13 +76,17 @@ namespace mailGonder
 
         private void btnGonder_MouseMove(object sender, MouseEventArgs e)
         {
-
             btnGonder.Image = Properties.Resources.sendOn;
         }
 
         private void btnAliciEkle_Click(object sender, EventArgs e)
         {
             
+        }
+
+        private void btnAliciEkle_MouseMove(object sender, MouseEventArgs e)
+        {
+           
         }
 
        
