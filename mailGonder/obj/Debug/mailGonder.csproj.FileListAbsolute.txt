@@ -1,0 +1,10 @@
+C:\Users\token\Documents\Visual Studio 2013\Projects\mailGonder\mailGonder\bin\Debug\mailGonder.exe.config
+C:\Users\token\Documents\Visual Studio 2013\Projects\mailGonder\mailGonder\bin\Debug\mailGonder.exe
+C:\Users\token\Documents\Visual Studio 2013\Projects\mailGonder\mailGonder\bin\Debug\mailGonder.pdb
+C:\Users\token\Documents\Visual Studio 2013\Projects\mailGonder\mailGonder\obj\Debug\mailGonder.csprojResolveAssemblyReference.cache
+C:\Users\token\Documents\Visual Studio 2013\Projects\mailGonder\mailGonder\obj\Debug\mailGonder.Form1.resources
+C:\Users\token\Documents\Visual Studio 2013\Projects\mailGonder\mailGonder\obj\Debug\mailGonder.Properties.Resources.resources
+C:\Users\token\Documents\Visual Studio 2013\Projects\mailGonder\mailGonder\obj\Debug\mailGonder.csproj.GenerateResource.Cache
+C:\Users\token\Documents\Visual Studio 2013\Projects\mailGonder\mailGonder\obj\Debug\mailGonder.exe
+C:\Users\token\Documents\Visual Studio 2013\Projects\mailGonder\mailGonder\obj\Debug\mailGonder.pdb
+C:\Users\token\Documents\Visual Studio 2013\Projects\mailGonder\mailGonder\obj\Debug\mailGonder.AliciEkle.resources
