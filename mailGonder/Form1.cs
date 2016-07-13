@@ -23,11 +23,17 @@ namespace mailGonder
         {
             MailMessage ePosta = new MailMessage();
 
-            ePosta.From = new MailAddress("enestok81@gmail.com");
-            ePosta.To.Add(txtAliciMail.Text);
+            var splitMails = txtAliciMail.Text.Split(';').ToList();
+          
+
+            ePosta.From = new MailAddress(""+ txtGonderenMail.Text +"");
+            foreach (string hasSplitted in splitMails)
+            {
+                ePosta.To.Add(hasSplitted.ToString());
+            }
             ePosta.Subject = txtKonu.Text;
             ePosta.Body = txtRichMesaj.Text;
-            ePosta.Attachments.Add(new Attachment(@"D:\dosya1.txt"));
+            //ePosta.Attachments.Add(new Attachment(@"D:\dosya1.txt"));
 
             SmtpClient smtp = new SmtpClient();
             smtp.Credentials= new NetworkCredential("" + txtGonderenMail.Text + "", "" + txtGonderenSifre.Text + "");
@@ -76,8 +82,7 @@ namespace mailGonder
 
         private void btnAliciEkle_Click(object sender, EventArgs e)
         {
-            var a = txtAliciMail.Text.Split(';');
-
+            
         }
 
        

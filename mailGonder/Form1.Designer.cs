@@ -59,7 +59,8 @@
             this.txtAliciMail.Name = "txtAliciMail";
             this.txtAliciMail.Size = new System.Drawing.Size(201, 21);
             this.txtAliciMail.TabIndex = 3;
-            this.toolTip1.SetToolTip(this.txtAliciMail, "Alıcının Mail Adresini Giriniz. (example@xmail.com)");
+            this.toolTip1.SetToolTip(this.txtAliciMail, "Alıcının Mail Adresini Giriniz. (example@xmail.com)\r\n*Birden fazla mail adresi va" +
+        "rsa \';\' ile ayırınız.\r\n");
             // 
             // txtKonu
             // 
