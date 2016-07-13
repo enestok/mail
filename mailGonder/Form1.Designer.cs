@@ -137,7 +137,7 @@
             // button2
             // 
             this.button2.Image = global::mailGonder.Properties.Resources.attachement;
-            this.button2.Location = new System.Drawing.Point(323, 105);
+            this.button2.Location = new System.Drawing.Point(324, 105);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(59, 79);
             this.button2.TabIndex = 7;
