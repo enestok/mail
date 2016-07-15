@@ -37,9 +37,10 @@
             this.label3 = new System.Windows.Forms.Label();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.txtGonderenMail = new System.Windows.Forms.TextBox();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnAddAttach = new System.Windows.Forms.Button();
             this.btnAliciEkle = new System.Windows.Forms.Button();
             this.btnGonder = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -47,6 +48,7 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.selectedFilePanel1 = new mailGonder.SelectedFilePanel();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -55,10 +57,11 @@
             // txtAliciMail
             // 
             this.txtAliciMail.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txtAliciMail.Location = new System.Drawing.Point(105, 31);
+            this.txtAliciMail.Location = new System.Drawing.Point(105, 38);
             this.txtAliciMail.Name = "txtAliciMail";
             this.txtAliciMail.Size = new System.Drawing.Size(201, 21);
             this.txtAliciMail.TabIndex = 3;
+            this.txtAliciMail.Text = "enestok81@gmail.com";
             this.toolTip1.SetToolTip(this.txtAliciMail, "Alıcının Mail Adresini Giriniz. (example@xmail.com)\r\n*Birden fazla mail adresi va" +
         "rsa \';\' ile ayırınız ya da Alıcı Ekle butonunu kullanınız. \r\n");
             // 
@@ -69,22 +72,23 @@
             this.txtKonu.Name = "txtKonu";
             this.txtKonu.Size = new System.Drawing.Size(200, 21);
             this.txtKonu.TabIndex = 5;
+            this.txtKonu.Text = "deneme";
             this.toolTip1.SetToolTip(this.txtKonu, "e-Posta Başlığı Giriniz");
             // 
             // txtRichMesaj
             // 
             this.txtRichMesaj.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txtRichMesaj.Location = new System.Drawing.Point(36, 87);
+            this.txtRichMesaj.Location = new System.Drawing.Point(19, 95);
             this.txtRichMesaj.Name = "txtRichMesaj";
-            this.txtRichMesaj.Size = new System.Drawing.Size(271, 135);
+            this.txtRichMesaj.Size = new System.Drawing.Size(460, 200);
             this.txtRichMesaj.TabIndex = 6;
-            this.txtRichMesaj.Text = "";
+            this.txtRichMesaj.Text = "deneme maili --";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Arial Unicode MS", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label1.Location = new System.Drawing.Point(33, 31);
+            this.label1.Location = new System.Drawing.Point(23, 40);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(63, 16);
             this.label1.TabIndex = 3;
@@ -104,7 +108,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Arial Unicode MS", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label3.Location = new System.Drawing.Point(35, 68);
+            this.label3.Location = new System.Drawing.Point(33, 75);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(62, 16);
             this.label3.TabIndex = 5;
@@ -117,16 +121,19 @@
             this.txtGonderenMail.Name = "txtGonderenMail";
             this.txtGonderenMail.Size = new System.Drawing.Size(201, 21);
             this.txtGonderenMail.TabIndex = 0;
+            this.txtGonderenMail.Text = "enestok81@gmail.com";
             this.toolTip1.SetToolTip(this.txtGonderenMail, "Alıcının Mail Adresini Giriniz. (example@xmail.com)");
             // 
-            // button2
+            // btnAddAttach
             // 
-            this.button2.Location = new System.Drawing.Point(325, 87);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(59, 79);
-            this.button2.TabIndex = 7;
-            this.toolTip1.SetToolTip(this.button2, "Dosya Ekle..");
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnAddAttach.Image = global::mailGonder.Properties.Resources.attachement;
+            this.btnAddAttach.Location = new System.Drawing.Point(651, 11);
+            this.btnAddAttach.Name = "btnAddAttach";
+            this.btnAddAttach.Size = new System.Drawing.Size(73, 80);
+            this.btnAddAttach.TabIndex = 7;
+            this.toolTip1.SetToolTip(this.btnAddAttach, "Dosya Ekle..");
+            this.btnAddAttach.UseVisualStyleBackColor = true;
+            this.btnAddAttach.Click += new System.EventHandler(this.button2_Click);
             // 
             // btnAliciEkle
             // 
@@ -134,13 +141,16 @@
             this.btnAliciEkle.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnAliciEkle.Font = new System.Drawing.Font("Arial", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btnAliciEkle.ForeColor = System.Drawing.Color.Transparent;
-            this.btnAliciEkle.Location = new System.Drawing.Point(324, 19);
+            this.btnAliciEkle.Image = global::mailGonder.Properties.Resources.iconAddd;
+            this.btnAliciEkle.Location = new System.Drawing.Point(324, 26);
             this.btnAliciEkle.Name = "btnAliciEkle";
             this.btnAliciEkle.Size = new System.Drawing.Size(42, 42);
             this.btnAliciEkle.TabIndex = 4;
             this.toolTip1.SetToolTip(this.btnAliciEkle, "Alıcı Ekle");
             this.btnAliciEkle.UseVisualStyleBackColor = false;
             this.btnAliciEkle.Click += new System.EventHandler(this.btnAliciEkle_Click);
+            this.btnAliciEkle.MouseLeave += new System.EventHandler(this.btnAliciEkle_MouseLeave);
+            this.btnAliciEkle.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnAliciEkle_MouseMove);
             // 
             // btnGonder
             // 
@@ -148,7 +158,8 @@
             this.btnGonder.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnGonder.FlatAppearance.BorderSize = 0;
             this.btnGonder.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnGonder.Location = new System.Drawing.Point(325, 427);
+            this.btnGonder.Image = global::mailGonder.Properties.Resources.sendOff;
+            this.btnGonder.Location = new System.Drawing.Point(733, 11);
             this.btnGonder.Name = "btnGonder";
             this.btnGonder.Size = new System.Drawing.Size(80, 80);
             this.btnGonder.TabIndex = 8;
@@ -157,6 +168,17 @@
             this.btnGonder.Click += new System.EventHandler(this.btnGonder_Click);
             this.btnGonder.MouseLeave += new System.EventHandler(this.btnGonder_MouseLeave);
             this.btnGonder.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnGonder_MouseMove);
+            // 
+            // button1
+            // 
+            this.button1.Image = global::mailGonder.Properties.Resources.attachement;
+            this.button1.Location = new System.Drawing.Point(383, 149);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(73, 49);
+            this.button1.TabIndex = 17;
+            this.toolTip1.SetToolTip(this.button1, "Dosya Ekle..");
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // openFileDialog1
             // 
@@ -190,6 +212,7 @@
             this.txtGonderenSifre.PasswordChar = '*';
             this.txtGonderenSifre.Size = new System.Drawing.Size(201, 21);
             this.txtGonderenSifre.TabIndex = 1;
+            this.txtGonderenSifre.Text = "3735704enestok";
             // 
             // groupBox1
             // 
@@ -211,37 +234,48 @@
             this.groupBox2.Controls.Add(this.label1);
             this.groupBox2.Controls.Add(this.txtAliciMail);
             this.groupBox2.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.groupBox2.Location = new System.Drawing.Point(21, 109);
+            this.groupBox2.Location = new System.Drawing.Point(439, 12);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(401, 74);
+            this.groupBox2.Size = new System.Drawing.Size(401, 91);
             this.groupBox2.TabIndex = 14;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Alıcı";
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.button2);
+            this.groupBox3.Controls.Add(this.btnAddAttach);
             this.groupBox3.Controls.Add(this.label3);
+            this.groupBox3.Controls.Add(this.selectedFilePanel1);
+            this.groupBox3.Controls.Add(this.btnGonder);
             this.groupBox3.Controls.Add(this.label2);
             this.groupBox3.Controls.Add(this.txtRichMesaj);
             this.groupBox3.Controls.Add(this.txtKonu);
             this.groupBox3.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.groupBox3.Location = new System.Drawing.Point(21, 189);
+            this.groupBox3.Location = new System.Drawing.Point(21, 109);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(401, 232);
+            this.groupBox3.Size = new System.Drawing.Size(819, 309);
             this.groupBox3.TabIndex = 15;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "E-Posta ";
+            // 
+            // selectedFilePanel1
+            // 
+            this.selectedFilePanel1.AutoScroll = true;
+            this.selectedFilePanel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.selectedFilePanel1.Location = new System.Drawing.Point(485, 95);
+            this.selectedFilePanel1.Name = "selectedFilePanel1";
+            this.selectedFilePanel1.Size = new System.Drawing.Size(328, 200);
+            this.selectedFilePanel1.TabIndex = 16;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(440, 518);
+            this.ClientSize = new System.Drawing.Size(864, 453);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.btnGonder);
             this.Name = "Form1";
             this.Text = "E-Posta Yaz";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -265,7 +299,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnGonder;
         private System.Windows.Forms.Button btnAliciEkle;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnAddAttach;
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.Label label4;
@@ -275,6 +309,8 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox groupBox3;
+        private SelectedFilePanel selectedFilePanel1;
+        private System.Windows.Forms.Button button1;
     }
 }
 

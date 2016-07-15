@@ -73,6 +73,16 @@ namespace mailGonder.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap cancelAttach {
+            get {
+                object obj = ResourceManager.GetObject("cancelAttach", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap iconAddd {
             get {
                 object obj = ResourceManager.GetObject("iconAddd", resourceCulture);
@@ -83,9 +93,9 @@ namespace mailGonder.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap iconAddd1 {
+        internal static System.Drawing.Bitmap iconAddOn_50x50 {
             get {
-                object obj = ResourceManager.GetObject("iconAddd1", resourceCulture);
+                object obj = ResourceManager.GetObject("iconAddOn_50x50", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

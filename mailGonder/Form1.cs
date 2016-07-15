@@ -23,18 +23,28 @@ namespace mailGonder
         {
             MailMessage ePosta = new MailMessage();
 
-            ePosta.From = new MailAddress("" + txtGonderenMail.Text + "");
+            ePosta.From = new MailAddress("" + txtGonderenMail.Text + "");  // gönderici 
 
-            var splitMails = txtAliciMail.Text.Split(';').ToList();
+            var splitMails = txtAliciMail.Text.Split(';').ToList();   
             foreach (string hasSplitted in splitMails)
             {
-                ePosta.To.Add(hasSplitted.ToString());
+                ePosta.To.Add(hasSplitted.ToString());  // alıcı
             }
 
-            ePosta.Subject = txtKonu.Text;
-            ePosta.Body = txtRichMesaj.Text;
-            //ePosta.Attachments.Add(new Attachment(@"D:\dosya1.txt"));
+            ePosta.Subject = txtKonu.Text; // mail konusu\başlığı
+            ePosta.Body = txtRichMesaj.Text; // mail içeriği
 
+            List<string> a = openFileDialog1.FileNames.ToList();
+
+            if (openFileDialog1.ShowDialog() == DialogResult.OK && 
+                    openFileDialog1.FileNames.ToString() != "") 
+            {
+                for (int i = 0; i < a.Count; i++)
+                {
+                    ePosta.Attachments.Add(new Attachment(a[i].ToString()));
+                }   
+            }
+            
             SmtpClient smtp = new SmtpClient();
             smtp.Credentials= new NetworkCredential("" + txtGonderenMail.Text + "", "" + txtGonderenSifre.Text + "");
 
@@ -86,9 +96,35 @@ namespace mailGonder
 
         private void btnAliciEkle_MouseMove(object sender, MouseEventArgs e)
         {
-           
+            btnAliciEkle.Image = Properties.Resources.iconAddOn_50x50;
         }
 
+        private void btnAliciEkle_MouseLeave(object sender, EventArgs e)
+        {
+            btnAliciEkle.Image = Properties.Resources.iconAddd;
+        }
+
+        private void button2_Click(object sender, EventArgs e) // btnAddAttach
+        {
+            openFileDialog1.Title = "Dosya Seç..";
+
+            openFileDialog1.FileName = "";
+
+            openFileDialog1.Multiselect = true;
+
+            openFileDialog1.ShowDialog();
+
+            List<string> a = openFileDialog1.FileNames.ToList(); //path listesi
+            
+            selectedFilePanel1.AddTool(a);
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            //RefreshLocation();
+            //MessageBox.Show(txtRichMesaj.Rtf);
+        }
        
     }
 }
