@@ -21,32 +21,41 @@ namespace mailGonder
 
         public bool MailGonder(string konu, string icerik)
         {
+            string GonderenMail = txtGonderenMail.Text;
+            string GonderenSifre = txtGonderenSifre.Text; 
+            string AliciMail = txtAliciMail.Text;
+            string MailKonu = txtKonu.Text;
+            string MailIcerik = txtRichMesaj.Text;
+
             MailMessage ePosta = new MailMessage();
 
-            ePosta.From = new MailAddress("" + txtGonderenMail.Text + "");  // gönderici 
+            ePosta.From = new MailAddress("" + GonderenMail + "");  // gönderici 
 
-            var splitMails = txtAliciMail.Text.Split(';').ToList();   
+            
+            var splitMails = AliciMail.Split(';').ToList();   
             foreach (string hasSplitted in splitMails)
             {
                 ePosta.To.Add(hasSplitted.ToString());  // alıcı
             }
 
-            ePosta.Subject = txtKonu.Text; // mail konusu\başlığı
-            ePosta.Body = txtRichMesaj.Text; // mail içeriği
+            ePosta.Subject = MailKonu; // mail konusu\başlığı
+            ePosta.Body = MailIcerik; // mail içeriği
 
             List<string> a = openFileDialog1.FileNames.ToList();
 
-            if (openFileDialog1.ShowDialog() == DialogResult.OK && 
+            DialogResult result = openFileDialog1.ShowDialog();
+
+            if (result == DialogResult.OK && result != DialogResult.Cancel &&
                     openFileDialog1.FileNames.ToString() != "") 
             {
                 for (int i = 0; i < a.Count; i++)
                 {
                     ePosta.Attachments.Add(new Attachment(a[i].ToString()));
-                }   
+                }
             }
             
             SmtpClient smtp = new SmtpClient();
-            smtp.Credentials= new NetworkCredential("" + txtGonderenMail.Text + "", "" + txtGonderenSifre.Text + "");
+            smtp.Credentials= new NetworkCredential("" + GonderenMail + "", "" + GonderenSifre + "");
 
             smtp.Port = 587; // gmail port numarası
             smtp.Host = "smtp.gmail.com";
@@ -115,7 +124,7 @@ namespace mailGonder
             openFileDialog1.ShowDialog();
 
             List<string> a = openFileDialog1.FileNames.ToList(); //path listesi
-            
+
             selectedFilePanel1.AddTool(a);
 
         }
@@ -125,6 +134,6 @@ namespace mailGonder
             //RefreshLocation();
             //MessageBox.Show(txtRichMesaj.Rtf);
         }
-       
+
     }
 }
