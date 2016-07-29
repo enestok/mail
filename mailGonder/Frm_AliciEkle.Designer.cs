@@ -1,6 +1,6 @@
 ﻿namespace mailGonder
 {
-    partial class AliciEkle
+    partial class Frm_AliciEkle
     {
         /// <summary>
         /// Required designer variable.

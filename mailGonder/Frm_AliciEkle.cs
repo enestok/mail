@@ -10,11 +10,12 @@ using System.Windows.Forms;
 
 namespace mailGonder
 {
-    public partial class AliciEkle : Form
+    public partial class Frm_AliciEkle : Form
     {
-        public AliciEkle()
+        public Frm_AliciEkle()
         {
             InitializeComponent();
+            new RehberBLL.Common().Deneme();
         }
     }
 }

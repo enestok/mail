@@ -14,7 +14,6 @@ namespace mailGonder
     public partial class SelectedFileTool : UserControl
     {
         private string _fileName;
-        public string FilePath { get; set; }
 
         //public RichTextBox Parent { get; set; }
         public SelectedFilePanel Parent { get; set; }
@@ -25,7 +24,7 @@ namespace mailGonder
             set
             {
                 _fileName = value;
-                lblFileName.Text = value;
+                lblFileName.Text = value;   // tool un içindeki linkLabel. Path yazan yer. Sadece dosya ismini yazdır..
             }
         }
 

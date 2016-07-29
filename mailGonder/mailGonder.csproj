@@ -44,17 +44,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AliciEkle.cs">
+    <Compile Include="Frm_AliciEkle.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AliciEkle.Designer.cs">
-      <DependentUpon>AliciEkle.cs</DependentUpon>
+    <Compile Include="Frm_AliciEkle.Designer.cs">
+      <DependentUpon>Frm_AliciEkle.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form1.cs">
+    <Compile Include="Frm_ePostaOlustur.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Frm_ePostaOlustur.Designer.cs">
+      <DependentUpon>Frm_ePostaOlustur.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -70,11 +70,11 @@
     <Compile Include="SelectedFileTool.Designer.cs">
       <DependentUpon>SelectedFileTool.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="AliciEkle.resx">
-      <DependentUpon>AliciEkle.cs</DependentUpon>
+    <EmbeddedResource Include="Frm_AliciEkle.resx">
+      <DependentUpon>Frm_AliciEkle.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="Frm_ePostaOlustur.resx">
+      <DependentUpon>Frm_ePostaOlustur.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -122,6 +122,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\cancelAttach.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\RehberBLL\RehberBLL.csproj">
+      <Project>{8fdd79c6-4c71-4e6c-a537-21b0d5d2d605}</Project>
+      <Name>RehberBLL</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

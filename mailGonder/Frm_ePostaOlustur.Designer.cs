@@ -1,6 +1,6 @@
 ﻿namespace mailGonder
 {
-    partial class Form1
+    partial class Frm_ePostaOlustur
     {
         /// <summary>
         /// Required designer variable.
@@ -133,7 +133,7 @@
             this.btnAddAttach.TabIndex = 7;
             this.toolTip1.SetToolTip(this.btnAddAttach, "Dosya Ekle..");
             this.btnAddAttach.UseVisualStyleBackColor = true;
-            this.btnAddAttach.Click += new System.EventHandler(this.button2_Click);
+            this.btnAddAttach.Click += new System.EventHandler(this.btnAddAttach_Click);
             // 
             // btnAliciEkle
             // 

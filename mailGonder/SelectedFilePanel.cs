@@ -19,7 +19,26 @@ namespace mailGonder
 
         private int _ly = 10;
 
-        public void AddTool(List<string> pathList)
+        public List<string> GetPathList
+        {
+            get
+            {
+                var lst = new List<string>();
+
+                foreach (Control item in this.Controls)
+                {
+                    var tool = item as SelectedFileTool;
+                    if (tool != null)
+                    {
+                        lst.Add(tool.FileName);
+                    }
+                }
+
+                return lst;
+            }
+        } 
+
+        public void AddTool(List<string> pathList) // attach edilen belgeler etrafındaki çerçeveyle braber gösteriliyor.
         {
 
             foreach (var item in pathList)
@@ -35,13 +54,13 @@ namespace mailGonder
             }
         }
 
-        private void SelectedFilePanel_Load(object sender, EventArgs e)
+        private void SelectedFilePanel_Load(object sender, EventArgs e) 
         {
 
         }
 
-        public void RefreshLocation()
-        {
+        public void RefreshLocation() // eklenen belge iptal edilmek istendiğinde çerçevedeki (x) e basınca çerçeve görünmeyecek. 
+        {                             // diğer eklenen belgelerin konumlarının yenilenmesi lazım..
             _ly = 10;
       
             foreach (Control cntr in this.Controls)

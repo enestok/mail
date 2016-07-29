@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Net;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -12,12 +13,13 @@ using  System.Net.Mail;
 
 namespace mailGonder
 {
-    public partial class Form1 : Form
+    public partial class Frm_ePostaOlustur : Form
     {
-        public Form1()
+        public Frm_ePostaOlustur()
         {
             InitializeComponent();
         }
+
 
         public bool MailGonder(string konu, string icerik)
         {
@@ -35,24 +37,38 @@ namespace mailGonder
             var splitMails = AliciMail.Split(';').ToList();   
             foreach (string hasSplitted in splitMails)
             {
-                ePosta.To.Add(hasSplitted.ToString());  // alıcı
+                if ( hasSplitted.Trim() != "")
+                {
+                    try
+                    {
+                        ePosta.To.Add(hasSplitted.Trim().ToString());  // alıcı
+                    }
+                    catch (FormatException e)
+                    {
+                        MessageBox.Show("bilgilerinizi kontrol ediniz..." + "\n \n" + e);
+                    }
+                        
+                }
+                
             }
 
             ePosta.Subject = MailKonu; // mail konusu\başlığı
             ePosta.Body = MailIcerik; // mail içeriği
 
-            List<string> a = openFileDialog1.FileNames.ToList();
+            var files = selectedFilePanel1.GetPathList;
 
-            DialogResult result = openFileDialog1.ShowDialog();
-
-            if (result == DialogResult.OK && result != DialogResult.Cancel &&
-                    openFileDialog1.FileNames.ToString() != "") 
+            if (files.Count > 0) 
             {
-                for (int i = 0; i < a.Count; i++)
+                foreach (var f in files)
                 {
-                    ePosta.Attachments.Add(new Attachment(a[i].ToString()));
+                    ePosta.Attachments.Add(new Attachment(f));
                 }
+               
             }
+            //else if (result == DialogResult.Cancel)
+            //{
+                
+            //}
             
             SmtpClient smtp = new SmtpClient();
             smtp.Credentials= new NetworkCredential("" + GonderenMail + "", "" + GonderenSifre + "");
@@ -62,17 +78,20 @@ namespace mailGonder
             smtp.EnableSsl = true;
 
             object userState = ePosta;
+            ePosta.CC.Add(txtAliciMail.Text.Substring(0,19));
             bool kontrol = true;
 
             try
             {
-                smtp.SendAsync(ePosta,(object)ePosta);
+                smtp.SendAsync(ePosta, (object)ePosta);
+                //smtp.Send(ePosta);
+
                 MessageBox.Show("mail gönderildi."); 
             }
-            catch (Exception)
+            catch (Exception e)
             {
                 kontrol = false;
-                MessageBox.Show("mail gönderme işlemi başarısız!");
+                MessageBox.Show(" mail gönderme işlemi başarısız! " + "\n \n" + e );
             }
 
             return kontrol;
@@ -100,7 +119,8 @@ namespace mailGonder
 
         private void btnAliciEkle_Click(object sender, EventArgs e)
         {
-            
+             Frm_AliciEkle _frmAlici = new Frm_AliciEkle();
+            _frmAlici.ShowDialog();
         }
 
         private void btnAliciEkle_MouseMove(object sender, MouseEventArgs e)
@@ -113,20 +133,19 @@ namespace mailGonder
             btnAliciEkle.Image = Properties.Resources.iconAddd;
         }
 
-        private void button2_Click(object sender, EventArgs e) // btnAddAttach
+        private void btnAddAttach_Click(object sender, EventArgs e)
         {
             openFileDialog1.Title = "Dosya Seç..";
 
-            openFileDialog1.FileName = "";
+            openFileDialog1.FileName = null;
 
             openFileDialog1.Multiselect = true;
 
             openFileDialog1.ShowDialog();
 
-            List<string> a = openFileDialog1.FileNames.ToList(); //path listesi
+            List<string> pathList = openFileDialog1.FileNames.ToList(); //path listesi
 
-            selectedFilePanel1.AddTool(a);
-
+            selectedFilePanel1.AddTool(pathList);
         }
 
         private void button1_Click(object sender, EventArgs e)
